@@ -2,9 +2,11 @@ import 'package:adce_chat/app/chat/chat_bloc.dart';
 import 'package:adce_chat/app/chat/message_tile.dart';
 import 'package:adce_chat/app/models/message.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ChatList extends StatefulWidget {
+  const ChatList({Key key, @required this.bloc}) : super(key: key);
+  final ChatBloc bloc;
+
   @override
   _ChatListState createState() => _ChatListState();
 }
@@ -17,7 +19,7 @@ class _ChatListState extends State<ChatList> {
 
   @override
   void initState() {
-    bloc = Provider.of<ChatBloc>(context, listen: false);
+    bloc = widget.bloc;
     messagesStream = bloc.getMessages();
 
     super.initState();

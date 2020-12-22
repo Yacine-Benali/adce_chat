@@ -22,7 +22,7 @@ environment:
 
 dependencies:
   firebase_core: ^0.5.0
-  provider: ^4.3.2+3
+  #provider: ^4.3.2+3
   google_sign_in: ^4.5.1 
   firebase_auth: ^0.18.0+1
   rename: ^1.2.0

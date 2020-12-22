@@ -5,7 +5,6 @@ import 'package:adce_chat/services/api_path.dart';
 import 'package:adce_chat/services/database.dart';
 import 'package:adce_chat/services/firestore_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen._({Key key, this.database, this.uid}) : super(key: key);
@@ -13,14 +12,10 @@ class BaseScreen extends StatefulWidget {
   final String uid;
 
   static Widget create({@required String uid}) {
-    return Provider<Database>(
-      create: (_) => FirestoreService(),
-      child: Consumer<Database>(
-        builder: (_, Database database, __) => BaseScreen._(
-          database: database,
-          uid: uid,
-        ),
-      ),
+    Database database = FirestoreService();
+    return BaseScreen._(
+      database: database,
+      uid: uid,
     );
   }
 

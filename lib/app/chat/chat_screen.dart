@@ -5,7 +5,6 @@ import 'package:adce_chat/app/models/chat_user.dart';
 import 'package:adce_chat/services/database.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ChatScreen extends StatefulWidget {
   ChatScreen._({this.chatBloc});
@@ -16,17 +15,13 @@ class ChatScreen extends StatefulWidget {
     @required ChatUser otherUser,
     @required Database database,
   }) {
-    return Provider(
-      create: (_) => ChatBloc(
-        otherUser: otherUser,
-        currentUser: currentUser,
-        database: database,
-      ),
-      child: Consumer<ChatBloc>(
-        builder: (_, chatBloc, __) => ChatScreen._(
-          chatBloc: chatBloc,
-        ),
-      ),
+    ChatBloc chatBloc = ChatBloc(
+      database: database,
+      otherUser: otherUser,
+      currentUser: currentUser,
+    );
+    return ChatScreen._(
+      chatBloc: chatBloc,
     );
   }
 
@@ -84,9 +79,9 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: ChatList(),
+            child: ChatList(bloc: bloc),
           ),
-          ChatInputBar(),
+          ChatInputBar(bloc: bloc),
         ],
       ),
     );

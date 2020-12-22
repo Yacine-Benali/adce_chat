@@ -1,13 +1,13 @@
 import 'package:adce_chat/app/base_screen.dart';
 import 'package:adce_chat/app/sign_in/sign_in_screen.dart';
 import 'package:adce_chat/services/auth.dart';
+import 'package:adce_chat/services/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<Auth>(context, listen: false);
+    final auth = FirebaseAuthService();
 
     return StreamBuilder<AuthUser>(
       stream: auth.onAuthStateChanged,
@@ -17,10 +17,7 @@ class LandingScreen extends StatelessWidget {
           if (user == null) {
             return SignInScreen();
           } else {
-            return Provider<AuthUser>.value(
-              value: user,
-              child: BaseScreen.create(uid: user.uid),
-            );
+            return BaseScreen.create(uid: user.uid);
           }
         } else {
           return Scaffold(

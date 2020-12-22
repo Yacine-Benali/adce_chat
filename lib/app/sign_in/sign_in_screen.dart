@@ -1,6 +1,5 @@
-import 'package:adce_chat/services/auth.dart';
+import 'package:adce_chat/services/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class _SignInScreenState extends State<SignInScreen> {
   bool isLoading = false;
 
   Future<void> _signInWithGoogle(BuildContext context) async {
-    final auth = Provider.of<Auth>(context, listen: false);
+    final auth = FirebaseAuthService();
     try {
       await auth.signInWithGoogle();
     } on Exception catch (e) {

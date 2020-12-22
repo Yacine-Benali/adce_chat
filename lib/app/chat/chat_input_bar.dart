@@ -5,15 +5,16 @@ import 'package:adce_chat/app/models/message.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
 
 /// handles the input of the chat screen
 /// send messages and photos
 class ChatInputBar extends StatefulWidget {
   ChatInputBar({
     Key key,
+    this.bloc,
   }) : super(key: key);
 
+  final ChatBloc bloc;
   @override
   _ChatInputBarState createState() => _ChatInputBarState();
 }
@@ -29,12 +30,14 @@ class _ChatInputBarState extends State<ChatInputBar> {
 
   ChatBloc bloc;
 
-  // this app is specefic for students so this var is cosnt
+  @override
+  void initState() {
+    bloc = widget.bloc;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    bloc = Provider.of<ChatBloc>(context, listen: false);
-
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10, 20),
       child: Material(

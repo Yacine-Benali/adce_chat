@@ -3,10 +3,10 @@ import 'package:adce_chat/app/conversations/conversation_tile.dart';
 import 'package:adce_chat/app/conversations/conversations_bloc.dart';
 import 'package:adce_chat/app/models/chat_user.dart';
 import 'package:adce_chat/app/profile/profile_screen.dart';
-import 'package:adce_chat/services/auth.dart';
 import 'package:adce_chat/services/database.dart';
+import 'package:adce_chat/services/firebase_auth_service.dart';
+import 'package:adce_chat/services/firestore_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ConversationsScreen extends StatefulWidget {
   final ConversationsBloc bloc;
@@ -17,7 +17,7 @@ class ConversationsScreen extends StatefulWidget {
     @required BuildContext context,
     @required ChatUser user,
   }) {
-    Database database = Provider.of<Database>(context, listen: false);
+    Database database = FirestoreService();
     ConversationsBloc bloc = ConversationsBloc(database: database, user: user);
     return ConversationsScreen._(bloc: bloc);
   }
@@ -56,7 +56,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       ),
     );
     if (didRequestSignOut == true) {
-      final Auth auth = Provider.of<Auth>(context, listen: false);
+      final auth = FirebaseAuthService();
       await auth.signOut();
     }
   }
