@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1035345877740",
+    "project_id": "adce-c16d7",
+    "storage_bucket": "adce-c16d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035345877740:android:0608885c4886564630e3c9",
+        "android_client_info": {
+          "package_name": "com.benalitechnologies.adce_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035345877740-gea0e6df1irp8p0vtn6r7hrdcjl70opk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBrcSDQ91_8q_JjGCWNl_lHq5B25e6sOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035345877740-gea0e6df1irp8p0vtn6r7hrdcjl70opk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
