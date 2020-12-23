@@ -9,7 +9,7 @@ class LandingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = FirebaseAuthService();
 
-    return StreamBuilder<AuthUser>(
+    return StreamBuilder(
       stream: auth.onAuthStateChanged,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {

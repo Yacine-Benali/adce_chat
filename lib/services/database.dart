@@ -24,7 +24,8 @@ abstract class Database {
     Query queryBuilder(Query query),
   });
 
-  Stream<T> documentStream<T>(
-      {@required String path,
-      @required T builder(Map<String, dynamic> data, String documentID)});
+  Stream<T> documentStream<T>({
+    @required String path,
+    @required T builder(Map<String, dynamic> data, String documentID),
+  });
 }
