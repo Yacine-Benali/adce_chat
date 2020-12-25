@@ -39,7 +39,7 @@ class MessageTile extends StatelessWidget {
           child: buildMessageContent(isSelf, message, context),
           padding: EdgeInsets.fromLTRB(
               lrEdgeInsets, tbEdgeInsets, lrEdgeInsets, tbEdgeInsets),
-          constraints: BoxConstraints(maxWidth: 200 / 2),
+          constraints: BoxConstraints(maxWidth: 200),
           decoration: BoxDecoration(
             color: (message.type == 0)
                 ? isSelf
